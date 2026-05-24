@@ -1,76 +1,87 @@
-# @miahper • Instagram Profile
+# @realdonaldtrump • Instagram Profile Mock
 
-A pixel-perfect, fully interactive single-file Instagram profile mock built as a standalone demo.
+A pixel-perfect, fully interactive single-file Instagram profile recreation for **President Donald J. Trump**.
 
-![Instagram Profile Mock](images/2.jpg)
+![Preview](images/1.jpg)
 
 ## Overview
 
-This project recreates the Instagram profile experience for **Mia Harper** (@miahper), an 18-year-old UCLA student living in Malibu, California. It includes realistic posts, story highlights, comments, likes, and smooth interactions — all in a single HTML file.
+This project is a detailed, client-side recreation of Donald Trump's Instagram profile (@realdonaldtrump). It features **24 recent posts** with captions grounded in real presidential activities from his second term, powered by **26 unique AI-generated images**.
+
+The demo includes realistic interactions, a working "Load more posts" feature, and is fully ready for deployment.
 
 ## Features
 
-- **Profile header** — Bio, stats (187 posts, 52.4k followers, 743 following), verified badge, follow/message buttons
-- **Story highlights** — Horizontally scrollable with animated gradient rings
-- **Posts grid** — 3-column responsive layout with hover overlays showing likes & comments
-- **Tabs** — Posts / Reels / Tagged views (Reels show fake play counts, Tagged shows attribution)
+- **Profile stats** — 7,922 posts • 43.9M followers • 512 following
+- **24 unique posts** in the grid (expandable via "Load more")
+- **Story highlights** — Oval Office, Mar-a-Lago, Cabinet, America First, Florida, Champions
 - **Post modal** — Full-screen viewer with:
   - Like / comment / save actions
   - Live comment posting
-  - Double-click to like on desktop
-- **Search** — Real-time filtering of posts by caption or comment text (`/` keyboard shortcut)
+  - Double-click to like
+- **Tabs** — Posts / Reels / Tagged views
+- **Search** — Real-time filtering with clear button (`/` keyboard shortcut)
 - **Interactive elements**:
   - Toggle follow state
-  - Like posts (heart animation + count updates)
-  - Save to collection
+  - Heart animation on like
   - Followers modal
-- **Keyboard support** — `Esc` closes modals, `L` likes current post, `/` focuses search
-- **Mobile-friendly** — Responsive layout using Tailwind
+- **Keyboard support** — `Esc`, `L` (like), `/` (search)
+- **Mobile-friendly** responsive design
+- **Vercel-ready** with `vercel.json`
 
 ## Tech Stack
 
 - **HTML5** + vanilla JavaScript
-- **Tailwind CSS 3.4** (via CDN)
-- **Font Awesome 6.5** (via CDN)
+- **Tailwind CSS** (via CDN)
+- **Font Awesome 6** (via CDN)
 - No build tools, no dependencies, no backend
 
 ## Getting Started
 
-1. Clone or download this repository
-2. Open `index.html` in any modern browser (Chrome, Firefox, Safari, Edge)
-3. Enjoy the demo — everything works offline
-
-No server or installation required.
+1. Clone the repository
+2. Open `index.html` in any modern browser
+3. Everything works offline
 
 ## Project Structure
 
 ```
-grok-web-3/
+grokdonaldtrump/
 ├── README.md
 ├── index.html
+├── vercel.json
+├── .gitignore
 └── images/
-    ├── 1.jpg … 14.jpg   # 14 AI-generated photos for the demo
+    └── 1.jpg … 26.jpg   # 26 unique AI-generated presidential photos
 ```
+
+## Deployment
+
+This project is configured for easy deployment on Vercel:
+
+- `vercel.json` included (clean URLs enabled)
+- Pure static site — no build step required
+- Simply connect the repository on Vercel and deploy
 
 ## Notes
 
-- All 14 images were generated specifically for this demo using AI.
-- The profile data, captions, and comments are fictional.
+- All 26 images were generated specifically for this project using AI.
+- Post captions are inspired by real activities (Executive Orders, Mar-a-Lago working weekends, Cabinet meetings, White House events, military meetings, etc.).
 - This is a frontend-only showcase — no real Instagram API or data is used.
+- The profile is fictionalized for demonstration purposes.
 
 ## Keyboard Shortcuts
 
-| Key       | Action                     |
-|-----------|----------------------------|
-| `/`       | Focus search bar           |
-| `L`       | Like current post (in modal) |
-| `Esc`     | Close post / followers modals |
-| `Enter`   | Post comment (when input focused) |
+| Key     | Action                              |
+|---------|-------------------------------------|
+| `/`     | Focus search bar                    |
+| `L`     | Like current post (when modal open) |
+| `Esc`   | Close modals                        |
+| `Enter` | Post comment (when input focused)   |
 
 ## Credits
 
-Built as a quick, self-contained web demo. Inspired by Instagram's 2024–2025 UI.
+Built as a self-contained web demo. Inspired by Instagram's current UI and President Trump's real public activities.
 
 ---
 
-> Open `index.html` and start exploring. Perfect for portfolios, UI practice, or quick demos.
+> Open `index.html` to explore. Ready for Vercel deployment.
