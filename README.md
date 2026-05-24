@@ -27,7 +27,7 @@ The demo includes realistic interactions, a working "Load more posts" feature, a
   - Followers modal
   - Full mobile search (tap icon to reveal search bar below nav)
 - **Keyboard support** — `Esc`, `L` (like), `/` (search)
-- **Mobile-friendly** responsive design with dedicated mobile search and polished layouts
+- **Mobile-first UX** — responsive profile (smaller pic on phones), pristine 3-col grid (no desktop overlays), bottom tab bar (Home/Search/Create/Reels/Profile), bottom-sheet modal, double-tap to like on touch, tighter spacing, active tap feedback, safe-area support
 - **Vercel-ready** with `vercel.json`
 
 ## Tech Stack

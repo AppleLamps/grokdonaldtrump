@@ -214,6 +214,77 @@
         transform: translateY(0);
       }
     }
+
+    /* ========== MOBILE VIEW IMPROVEMENTS ========== */
+    /* Cleaner taps, no blue highlight */
+    .ig-post, button, svg, i {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* Strong tap feedback on post grid (mobile + desktop) */
+    .ig-post:active img {
+      transform: scale(0.965) !important;
+      transition: transform 0.08s ease;
+    }
+    .ig-post:active {
+      box-shadow: none;
+    }
+
+    /* Mobile: pristine 3-col grid like native IG app (no hover overlays possible) */
+    @media (max-width: 767px) {
+      .post-grid {
+        gap: 2px;
+      }
+      .ig-post .overlay {
+        display: none !important;
+      }
+      .story-circle {
+        width: 52px;
+        height: 52px;
+        padding: 2px;
+      }
+      .modal-image {
+        max-height: 52vh !important;
+      }
+    }
+
+    /* Desktop: keep rich hover overlays */
+    @media (min-width: 768px) {
+      .modal-image {
+        max-height: 92vh;
+      }
+    }
+
+    /* Slightly tighter mobile action row + stats */
+    @media (max-width: 380px) {
+      .profile-actions {
+        gap: 0.35rem !important;
+      }
+      .profile-actions button {
+        font-size: 12px;
+        padding-left: 0.65rem;
+        padding-right: 0.65rem;
+        padding-top: 0.25rem;
+        padding-bottom: 0.25rem;
+      }
+    }
+
+    /* Mobile modal as bottom sheet (better kb + thumb reach) */
+    @media (max-width: 767px) {
+      #post-modal {
+        align-items: flex-end;
+        padding-top: 10vh;
+      }
+      #post-modal .ig-modal {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        max-height: 88vh;
+      }
+      /* Toast sits above bottom tab bar */
+      #toast {
+        bottom: 3.25rem !important;
+      }
+    }
   </style>
 </head>
 <body class="bg-[#fafafa] text-[#262626]">
@@ -294,17 +365,17 @@
   </div>
 
   <!-- Main Profile Content -->
-  <div class="max-w-[935px] mx-auto px-4 pt-6 pb-16">
+  <div class="max-w-[935px] mx-auto px-4 pt-6 pb-20 md:pb-16">
     
     <!-- Profile Header -->
     <div class="flex flex-col md:flex-row items-start md:items-center gap-y-6 md:gap-x-8 lg:gap-x-16">
       
       <!-- Profile Picture -->
       <div class="flex justify-center md:justify-start w-full md:w-auto">
-        <div class="profile-pic-ring w-[152px] h-[152px] flex-shrink-0">
+        <div class="profile-pic-ring w-[96px] h-[96px] sm:w-[110px] sm:h-[110px] md:w-[152px] md:h-[152px] flex-shrink-0">
           <div class="bg-white p-1 rounded-full">
             <img src="images/1.jpg" alt="President Donald J. Trump profile picture" 
-                 class="w-[142px] h-[142px] rounded-full object-cover ring-1 ring-[#dbdbdb]">
+                 class="w-[86px] h-[86px] sm:w-[100px] sm:h-[100px] md:w-[142px] md:h-[142px] rounded-full object-cover ring-1 ring-[#dbdbdb]">
           </div>
         </div>
       </div>
@@ -321,7 +392,7 @@
             </svg>
           </div>
 
-          <div class="flex items-center gap-x-2">
+          <div class="flex items-center gap-x-2 profile-actions">
             <!-- Action buttons -->
             <button onclick="followToggle(this)"
                     class="px-4 py-1.5 text-sm font-semibold bg-[#0095f6] hover:bg-[#1877f2] active:bg-[#0e5fc7] transition-colors text-white rounded-lg">
@@ -331,7 +402,7 @@
                     class="px-4 py-1.5 text-sm font-semibold bg-white border border-[#dbdbdb] hover:bg-[#fafafa] active:bg-[#f0f0f0] transition-colors rounded-lg">
               Message
             </button>
-            <button class="w-9 h-9 flex items-center justify-center border border-[#dbdbdb] hover:bg-[#fafafa] rounded-lg transition-colors" aria-label="Suggested users">
+            <button class="w-9 h-9 flex items-center justify-center border border-[#dbdbdb] hover:bg-[#fafafa] rounded-lg transition-colors active:bg-[#f0f0f0]" aria-label="Suggested users">
               <svg class="w-[18px] h-[18px]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2" />
                 <circle cx="9" cy="7" r="4" />
@@ -339,7 +410,7 @@
                 <line x1="22" y1="11" x2="16" y2="11" />
               </svg>
             </button>
-            <button class="w-9 h-9 flex items-center justify-center text-xl hover:bg-[#fafafa] rounded-lg transition-colors" aria-label="More options">
+            <button class="w-9 h-9 flex items-center justify-center text-xl hover:bg-[#fafafa] rounded-lg transition-colors active:bg-[#f0f0f0]" aria-label="More options">
               <svg class="w-[18px] h-[18px]" fill="currentColor" viewBox="0 0 24 24">
                 <circle cx="12" cy="12" r="1.5" />
                 <circle cx="6" cy="12" r="1.5" />
@@ -350,7 +421,7 @@
         </div>
 
         <!-- Stats -->
-        <div class="flex items-center gap-x-8 md:gap-x-10 text-sm mb-4">
+        <div class="flex items-center gap-x-6 sm:gap-x-8 md:gap-x-10 text-sm mb-4">
           <div class="ig-stat cursor-default">
             <span id="stat-posts" class="font-semibold">7922</span>
             <span class="text-[#8e8e8e]">posts</span>
@@ -387,7 +458,7 @@
 
     <!-- Tabs -->
     <div class="border-t border-[#dbdbdb] mt-4 pt-3">
-      <div class="flex justify-center gap-x-14 text-xs" id="profile-tabs">
+      <div class="flex justify-center gap-x-8 sm:gap-x-12 md:gap-x-14 text-xs" id="profile-tabs">
         <div data-tab="posts" onclick="switchTab('posts')" class="ig-tab section-tab flex items-center gap-x-1.5 border-t-2 border-[#262626] -mt-3 pt-3 text-[#262626] cursor-pointer active">
           <svg class="w-[17px] h-[17px]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round">
             <rect x="3" y="3" width="7" height="7" rx="1" />
@@ -429,6 +500,46 @@
     <!-- Footer note -->
     <div class="text-center mt-10 text-[10px] text-[#8e8e8e] tracking-wide">
       Presidential profile recreation • 24 recent posts shown (of 7,922 total) • Images grounded in real White House &amp; Mar-a-Lago activities
+    </div>
+  </div>
+
+  <!-- Mobile Bottom Tab Bar (IG-style app navigation for phones) -->
+  <div id="mobile-bottom-nav" class="md:hidden fixed bottom-0 inset-x-0 bg-white border-t border-[#dbdbdb] z-[65]" style="padding-bottom: env(safe-area-inset-bottom, 0px)">
+    <div class="max-w-[975px] mx-auto px-1 h-11 flex items-center justify-around text-[#262626]">
+      <!-- Home -->
+      <div onclick="window.scrollTo({top:0, behavior:'smooth'})" class="flex flex-col items-center justify-center w-11 h-11 active:opacity-60 transition-opacity" aria-label="Home">
+        <svg class="w-[22px] h-[22px]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+          <path d="M9 22V12h6v10" />
+        </svg>
+      </div>
+      <!-- Search (opens mobile search) -->
+      <div onclick="document.getElementById('mobile-search-btn')?.click(); setTimeout(()=>document.getElementById('mobile-nav-search')?.focus(),120)" class="flex flex-col items-center justify-center w-11 h-11 active:opacity-60 transition-opacity" aria-label="Search">
+        <svg class="w-[22px] h-[22px]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8" />
+          <path d="M21 21l-4.35-4.35" />
+        </svg>
+      </div>
+      <!-- Create / + (demo) -->
+      <div onclick="showToast('Create post — demo only')" class="flex flex-col items-center justify-center w-11 h-11 active:opacity-60 transition-opacity" aria-label="Create">
+        <svg class="w-[26px] h-[26px]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="18" height="18" rx="2" />
+          <line x1="12" y1="8" x2="12" y2="16" />
+          <line x1="8" y1="12" x2="16" y2="12" />
+        </svg>
+      </div>
+      <!-- Reels -->
+      <div onclick="switchTab('reels'); window.scrollTo({top:0, behavior:'smooth'})" class="flex flex-col items-center justify-center w-11 h-11 active:opacity-60 transition-opacity" aria-label="Reels">
+        <svg class="w-[22px] h-[22px]" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M8 5v14l11-7z" />
+        </svg>
+      </div>
+      <!-- Profile (scroll top + pulse ring) -->
+      <div onclick="window.scrollTo({top:0, behavior:'smooth'}); this.querySelector('img')?.classList.add('ring-2','ring-[#0095f6]'); setTimeout(()=>this.querySelector('img')?.classList.remove('ring-2','ring-[#0095f6]'), 900)" class="flex flex-col items-center justify-center w-11 h-11" aria-label="Profile">
+        <div class="w-[22px] h-[22px] rounded-full overflow-hidden ring-1 ring-offset-1 ring-[#dbdbdb]">
+          <img src="images/1.jpg" alt="Your profile" class="w-full h-full object-cover">
+        </div>
+      </div>
     </div>
   </div>
 
@@ -1267,6 +1378,10 @@
       modal.classList.remove('hidden')
       modal.classList.add('flex')
 
+      // Hide mobile bottom nav while modal open (prevents overlap on bottom sheet)
+      const mbNav = document.getElementById('mobile-bottom-nav')
+      if (mbNav) mbNav.style.visibility = 'hidden'
+
       // Focus comment input
       setTimeout(() => {
         document.getElementById('comment-input').focus()
@@ -1278,6 +1393,10 @@
       modal.classList.add('hidden')
       modal.classList.remove('flex')
       currentPostIndex = null
+
+      // Restore mobile bottom nav
+      const mbNav = document.getElementById('mobile-bottom-nav')
+      if (mbNav) mbNav.style.visibility = ''
     }
 
     // Instagram-style big heart burst (double-tap delight)
@@ -1467,6 +1586,21 @@
             toggleLike()
           }
         })
+      }
+
+      // Mobile double-tap support (touch devices) on the image area
+      const modalImageSide = document.querySelector('#post-modal .bg-black')
+      if (modalImageSide) {
+        let lastTap = 0
+        modalImageSide.addEventListener('touchend', (e) => {
+          const now = Date.now()
+          if (now - lastTap < 320 && currentPostIndex !== null) {
+            e.preventDefault()
+            showHeartBurst(modalImageSide)
+            toggleLike()
+          }
+          lastTap = now
+        }, { passive: false })
       }
     }
 
