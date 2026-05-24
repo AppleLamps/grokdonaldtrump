@@ -23,10 +23,11 @@ The demo includes realistic interactions, a working "Load more posts" feature, a
 - **Search** — Real-time filtering with clear button (`/` keyboard shortcut)
 - **Interactive elements**:
   - Toggle follow state
-  - Heart animation on like
+  - Heart animation + classic Instagram big heart burst on double-tap
   - Followers modal
+  - Full mobile search (tap icon to reveal search bar below nav)
 - **Keyboard support** — `Esc`, `L` (like), `/` (search)
-- **Mobile-friendly** responsive design
+- **Mobile-friendly** responsive design with dedicated mobile search and polished layouts
 - **Vercel-ready** with `vercel.json`
 
 ## Tech Stack
